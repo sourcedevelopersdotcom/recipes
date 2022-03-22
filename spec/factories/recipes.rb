@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :recipe do
-    payload { "" }
+    payload {}
   end
 end

@@ -18,7 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_21_182602) do
     t.jsonb "payload"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "((payload -> 'ingredients'::text))", name: "index_recipes_on_payload_ingredients", using: :gin
+    t.index "to_tsvector('english'::regconfig, (payload -> 'ingredients'::text))", name: "index_recipes_on_payload_ingredients", using: :gin
+    t.index "to_tsvector('english'::regconfig, (payload -> 'title'::text))", name: "index_recipes_on_payload_title", using: :gin
   end
 
 end
