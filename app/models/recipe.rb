@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Recipe < ApplicationRecord
   scope :rated_by_ingredients, lambda { |ingredients|
     where("to_tsvector('english', payload->'ingredients') @@ to_tsquery(?)", ingredients.join(' & '))
