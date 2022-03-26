@@ -10,7 +10,7 @@ module Api
       private
 
       def recipe_params
-        params.require(:ingredients)
+        params.require(:ingredients).map { |ingredient| ingredient.squish!.parameterize(separator: ' & ') }
       end
     end
   end
